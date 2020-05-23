@@ -1,0 +1,15 @@
+.nav.navbar-nav{
+  font-size: 15px;
+}
+#searchForm{
+  margin-right: 100px;
+}
+
+/*
+This hides the search-form in the nav-bar if the browser window gets too small.
+*/
+@media (max-width: 1200px){
+  #searchForm{
+    display: none;
+  }
+}

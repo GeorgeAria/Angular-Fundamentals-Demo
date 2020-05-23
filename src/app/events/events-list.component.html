@@ -1,0 +1,26 @@
+<div>
+  <h1>Upcoming Angular Events</h1>
+  <hr />
+  <!--
+    The "[event]" HTML element corresponds to an "event" variable in the event-thumbnail component.
+    It is set equal to the "event1" variable in the event-lists component.
+
+    The "(eventClick) HTML element corresponds to an "eventClick" variable/method in the event-thumbnail component.
+    When (eventClick) emits an event, it will trigger the "handleEventClicked() method in the event-list component.
+    "($event)" is the data that is emitted from the "eventClick" variable/method.
+    Send an object if multiple values need to be sent to the parent component.
+
+    The "#thumbnail" HTML element allows you to access the data/methods of a component (usually a child component).
+    In this case, it is the event-thumbnail component.
+    It is used in the button so that when it is clicked, it calls the "thumbnail.logFoo() method."
+
+    ngFor is usually called a structural directive, since they can add or remove things from the DOM.
+    The "*" preceding ngFor identifies it as a structural directive.
+  -->
+  <div class = "row">
+    <div class = "col-md-5" *ngFor = "let event of events">
+      <event-thumbnail [event] = "event">
+      </event-thumbnail>
+    </div>
+  </div>
+</div>

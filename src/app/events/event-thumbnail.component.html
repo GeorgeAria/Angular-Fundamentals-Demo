@@ -1,0 +1,32 @@
+<div>
+  <div class="well hoverwell thumbnail">
+    <h2>{{ event.name }}</h2>
+<!--
+  The "?" helps to prevent null values from causing errors in the web application.
+-->
+    <div>Date: {{ event?.date }}</div>
+<!--
+  The "[class.green]" element is an example of a class binding.
+  This is where if the boolean to the right of the "=" sign evaluates to true, it will add the class to the div.
+  The "green" class comes from the CSS file for this component.
+
+  THe [ngClass] element is a class binding, but for multiple classes.
+-->
+    <div [ngClass] = "getStartTimeClass()" [ngSwitch] = "event?.time">
+      Time: {{ event?.time }}
+<!--
+  A "<span> HTML element is useful when you want content to continue in one, straight line."
+-->
+      <span *ngSwitchCase = "'8:00 am'">(Early Start)</span>
+      <span *ngSwitchCase = "'10:00 am'">(Late Start)</span>
+      <span *ngSwitchDefault>(Normal Start)</span>
+    </div>
+    <div>Price: {{ event?.price }}</div>
+    <div>
+      <span>Location: {{ event?.location?.address }}</span>
+      <span class="pad-left">
+        {{ event?.location?.city }}, {{ event?.location?.country }}
+      </span>
+    </div>
+  </div>
+</div>
