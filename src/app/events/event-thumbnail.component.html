@@ -1,5 +1,5 @@
 <div>
-  <div class="well hoverwell thumbnail">
+  <div [routerLink] = "['/events', event.id]" class="well hoverwell thumbnail">
     <h2>{{ event.name }}</h2>
 <!--
   The "?" helps to prevent null values from causing errors in the web application.

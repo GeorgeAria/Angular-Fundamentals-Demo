@@ -1,13 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {EventsListComponent,
+        EventThumbnailComponent,
+        EventDetailsComponent,
+        CreateEventComponent} from './events/index';
 import { AppComponent } from './app.component';
-import { EventsListComponent } from './events/events-list.component';
-import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { NavbarComponent } from './nav/navbar.component';
-import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
+import { Four0fourComponent } from './errors/four0four.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { appRoutes } from './routes';
     EventsListComponent,
     EventThumbnailComponent,
     NavbarComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    CreateEventComponent,
+    Four0fourComponent
   ],
   imports: [
     BrowserModule,
