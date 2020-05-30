@@ -13,6 +13,7 @@ import { Four0fourComponent } from './errors/four0four.component';
 import { UserModule } from './user/user.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSessionComponent } from './events/event-details/create-session.component';
+import { SessionListComponent } from './events/event-details/session-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CreateSessionComponent } from './events/event-details/create-session.co
     EventDetailsComponent,
     CreateEventComponent,
     Four0fourComponent,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent
   ],
   imports: [
     BrowserModule,
