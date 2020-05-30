@@ -2,18 +2,40 @@
   <h1>Edit Your Profile </h1>
   <hr>
   <div class="col-md-4">
-    <form autocomplete="off" novalidate>
-      <div class="form-group">
+    <!--
+      [formGroup] binds to the "FormGroup" object in the component.
+      In this case, it is the "profileForm" object.
+    -->
+    <form [formGroup] = "profileForm" (ngSubmit) = "saveProfile(profileForm.value)" autocomplete="off" novalidate>
+    <!--
+      [ngClass] will add the 'error' class if the firstName field is invalid or if it was touched.
+    -->
+      <div class="form-group" [ngClass] = "{'error' : !validateFirstName() }">
         <label for="firstName">First Name:</label>
-        <input id="firstName" type="text" class="form-control" placeholder="First Name..." />
+    <!--
+      The "Validators" used in the component can be accessed here.
+      "profileForm.controls.firstName.errors.required" is set to true if there is a "required" error.
+      "profileForm.controls.firstName.errors.pattern" is set to true if there is a "pattern" error.
+      
+      The reason why these values are so long is because the "firstName" value is private in the component.
+      An alternate way of accessing the values (if they are public) can be seen in the "create-session" component/HTML template.
+    -->
+        <em *ngIf = "!validateFirstName() && profileForm.controls.firstName.errors.required">Required</em>
+        <em *ngIf = "!validateFirstName() && profileForm.controls.firstName.errors.pattern">Must start with a letter</em>
+    <!--
+      "formControlName" specifies the value that this input value will be bound to within the "FormGroup" object
+      in the component.
+    -->
+        <input formControlName = "firstName" id="firstName" type="text" class="form-control" placeholder="First Name..." />
       </div>
-      <div class="form-group">
+      <div class="form-group" [ngClass] = "{'error' : !validateLastName() }">
         <label for="lastName">Last Name:</label>
-        <input id="lastName" type="text" class="form-control" placeholder="Last Name..." />
+        <em *ngIf = "!validateLastName()">Required</em>
+        <input formControlName = "lastName" id="lastName" type="text" class="form-control" placeholder="Last Name..." />
       </div>
 
       <button type="submit" class="btn btn-primary">Save</button>
-      <button type="button" class="btn btn-default">Cancel</button>
+      <button (click) = "cancel()" type="button" class="btn btn-default">Cancel</button>
     </form>
   </div>
 </div>

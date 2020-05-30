@@ -1,0 +1,45 @@
+<h1>Login</h1>
+<hr>
+<div class="col-md-4">
+<!--
+  #loginForm gives access to the local form to get user data.
+  It will be passed into (ngSubmit).
+
+  (ngSubmit) prevents the form from submitting information to the server.
+
+  novalidate makes it so that HTML5 does not handle any "requirements" policing.
+-->
+  <form #loginForm = "ngForm" (ngSubmit) = "login(loginForm.value)" autocomplete="off" novalidate>
+    <div class="form-group">
+      <label for="userName">User Name:</label>
+<!--
+  Within *ngIf, it will only show the required text if it has invalid data (in this case, it is "required to have
+  some kind of data"), and it must have been clicked on at some point.
+  
+  The (input) makes it so that when text is entered into the input box, and event is fired.
+  In this case, the event is that the "userName" variable is updated (to the value in the input box),
+  in the component for this HTML template.
+  Ex: (input) = "userName=$event.target.value"
+
+  Instead, ngModel can be used to accomplish the above task with less code.
+  This will typically be in the "banana in a box" syntax ( [()] ), which represents two way binding.
+  In this case, it is not needed since the parenthesis are enough as it will make the input text respond to an event.
+-->
+      <em *ngIf = "loginForm.controls.userName?.invalid && (loginForm.controls.userName?.touched || mouseoverLogin)">Required</em>
+      <input (ngModel) = "username" name = "userName" id="userName" type="text" class="form-control"
+      placeholder="User Name..." required />
+    </div>
+    <div class="form-group" >
+      <label for="password">Password:</label>
+      <em *ngIf = "loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || mouseoverLogin)">Required</em>
+      <input (ngModel) = "password" name = "password" id="password" type="password" class="form-control"
+      placeholder="Password..." required/>
+    </div>
+
+    <span (mouseenter) = "mouseoverLogin = true" (mouseleave) = "mouseoverLogin = false">
+      <button type="submit" class="btn btn-primary" [disabled] = "loginForm.invalid">Login</button>
+    </span>
+
+    <button type="button" (click) = "cancel()"  class="btn btn-default">Cancel</button>
+  </form>
+</div>

@@ -10,6 +10,9 @@ import { NavbarComponent } from './nav/navbar.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { Four0fourComponent } from './errors/four0four.component';
+import { UserModule } from './user/user.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateSessionComponent } from './events/event-details/create-session.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +22,15 @@ import { Four0fourComponent } from './errors/four0four.component';
     NavbarComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    Four0fourComponent
+    Four0fourComponent,
+    CreateSessionComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    UserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

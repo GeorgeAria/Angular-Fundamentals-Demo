@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { IEvent } from './shared';
 
 @Component({
   selector: 'event-thumbnail',
@@ -10,7 +11,8 @@ export class EventThumbnailComponent implements OnInit {
   //@Input tells Angular to expect an "event" value to be passed into this component.
   //@Output allows Angular to output a JavaScript event to a parent component.
 
-  @Input() event:any;
+  @Input() event:IEvent;
+  
   @Output() eventClick = new EventEmitter();
 
   someProperty: string = "Hello String!";
