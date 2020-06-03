@@ -1,10 +1,10 @@
 <div>
   <div [routerLink] = "['/events', event.id]" class="well hoverwell thumbnail">
-    <h2>{{ event.name }}</h2>
+    <h2>{{ event.name | uppercase}}</h2>
 <!--
   The "?" helps to prevent null values from causing errors in the web application.
 -->
-    <div>Date: {{ event?.date }}</div>
+    <div>Date: {{ event?.date | date}}</div>
 <!--
   The "[class.green]" element is an example of a class binding.
   This is where if the boolean to the right of the "=" sign evaluates to true, it will add the class to the div.
@@ -21,7 +21,7 @@
       <span *ngSwitchCase = "'10:00 am'">(Late Start)</span>
       <span *ngSwitchDefault>(Normal Start)</span>
     </div>
-    <div>Price: {{ event?.price }}</div>
+    <div>Price: {{ event?.price | currency: 'USD'}}</div>
     <div>
       <span>Location: {{ event?.location?.address }}</span>
       <span class="pad-left">

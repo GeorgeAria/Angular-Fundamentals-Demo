@@ -10,7 +10,9 @@ import { IEvent, ISession } from '../shared';
 export class EventDetailsComponent implements OnInit {
 
   addMode: boolean;
-  event:IEvent;
+  event: IEvent;
+  filterBy = 'all';
+  sortBy: string = 'votes'
 
   constructor(private eventService: EventService,
               private route: ActivatedRoute) { }

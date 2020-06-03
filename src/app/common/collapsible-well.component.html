@@ -1,0 +1,20 @@
+<div (click) = "toggleContent()" class = "well pointable">
+  <h4>
+    <ng-content select = "[well-title]"></ng-content>
+  </h4>
+  <!--
+    ng-content is the element that tells Angular that whatever content exists in the
+    parent HTML template (in this case, in "session-list.component.html" within the "collapsible-well" tag),
+    should be place here.
+
+    This is an example of "Content Projection".
+
+    The "select" property will target the div with the class in the quotes if it looks like ".title".
+    In this case, this will look in "session-list.component.html" and look for the div with the class "body"
+    and show its contents here.
+
+    If the "select" property has [] within the quotes, it is targetting an attribute.
+    This may be better than using a class since you may conflict with class definitions in a CSS file.
+  -->
+  <ng-content select = "[well-body]" *ngIf = "visible"></ng-content>
+</div>
