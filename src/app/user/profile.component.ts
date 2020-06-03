@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { Toastr, TOASTR_TOKEN } from '../common/toastr.service';
 
 @Component({
   templateUrl: './profile.component.html',
@@ -11,7 +12,8 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
 
   constructor(private authService: AuthService,
-              private router: Router) { }
+              private router: Router,
+              @Inject(TOASTR_TOKEN) private toastr: Toastr) { }
 
   profileForm: FormGroup;
   private firstName: FormControl;
@@ -44,6 +46,7 @@ export class ProfileComponent implements OnInit {
     {
       this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
       this.router.navigate(['events']);
+      //this.toastr.success('Profile Saved');
     }
 
   }
