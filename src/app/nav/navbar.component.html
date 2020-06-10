@@ -37,14 +37,36 @@
           </li>
         </ul>
       </div>
-      <form id="searchForm"  class="navbar-form navbar-right"  >
+      <!--
+        ngSubmit can be used to trigger an event when the "Search" button is pressed or if the "Enter" button is pressed.
+      -->
+      <form id="searchForm" (ngSubmit) = "searchSessions(searchTerm)" class="navbar-form navbar-right"  >
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search Sessions" >
+          <input type="text" [(ngModel)] = "searchTerm" name = "searchTerm" class="form-control" placeholder="Search Sessions" >
         </div>
-        <button class="btn btn-default" >
+        <!--
+          modal-trigger is a directive that is called upon when this button is pressed.
+          The functionality can be found in "modal-trigger.directive.ts".
+
+          Setting it to "searchResults" will make it so that it uses the simple-modal with that elementId.
+        -->
+        <button class="btn btn-default" modal-trigger = "searchResults">
           Search
         </button>
       </form>
     </div>
   </div>
 </div>
+
+<!--
+  closeOnBodyClick determines whether this modal will close when an option is selected.
+
+  The "session.eventId" may error out below, but it is added in the "event.service.ts" service.
+-->
+<simple-modal closeOnBodyClick = "true" elementId = "searchResults" title = "Matching Sessions">
+  <div class = "list-group">
+    <a class = "list-group-item" *ngFor = "let session of foundSessions" [routerLink] = "['/events', session.eventId]">
+      {{session.name}}
+    </a>
+  </div>
+</simple-modal>

@@ -14,11 +14,13 @@ import { UserModule } from './user/user.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSessionComponent } from './events/event-details/create-session.component';
 import { SessionListComponent } from './events/event-details/session-list.component';
-import { CollapsibleWellComponent } from './common/collapsible-well.component';
 import { DurationPipe } from './events/shared/duration.pipe';
-import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
+import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent } from './common/index';
+import { SimpleModalComponent } from './common/simple-modal.component';
+import { ModalTriggerDirective } from './common/modal-trigger.directive';
 
 let toastr: Toastr = window['toastr'];
+let jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ let toastr: Toastr = window['toastr'];
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   imports: [
     BrowserModule,
@@ -42,9 +46,8 @@ let toastr: Toastr = window['toastr'];
     ReactiveFormsModule
   ],
   providers: [
-    {
-      provide: TOASTR_TOKEN, useValue: toastr
-    }
+    {provide: TOASTR_TOKEN, useValue: toastr},
+    {provide: JQ_TOKEN, useValue: jQuery}
   ],
   bootstrap: [AppComponent]
 })
