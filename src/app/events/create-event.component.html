@@ -25,10 +25,16 @@
     <!--
       ngModelGroup allows the ngModel fields nested within it to be applied to the field specified.
       In this case, it is the "location" value from the "IEvent" interface (event.model.ts).
+
+      validateLocation is an Angular directive used to validate a location variable.
+
+      #locationGroup allows other DOM nodes to use the DOM node elements of whatever ngModelGroup is assigned to.
+      In this case, it is assigned to "location".
     -->
-    <div ngModelGroup = "location">
+    <div ngModelGroup = "location"  #locationGroup = "ngModelGroup" validateLocation>
       <div class="form-group">
         <label for="address">Event Location:</label>
+        <em *ngIf="locationGroup?.invalid && locationGroup?.touched">You must enter either the full location OR an online Url</em>
         <input (ngModel)="newEvent.address" name="address" id="address" type="text" class="form-control" placeholder="Address of event..." />
       </div>
       <div class="row">
@@ -43,7 +49,14 @@
 
     <div class="form-group">
       <label for="onlineUrl">Online Url:</label>
-      <input (ngModel)="newEvent.onlineUrl" name="onlineUrl" id="onlineUrl" type="text" class="form-control" placeholder="Online Url..." />
+      <!--
+        The "change" method within the input tag will trigger when the content of the input changes.
+        It will look for locationGroup (which can be found in the #locationGroup element in the ngModelGroup equal to "location").
+        It will then look at its control and get an array of controls (meaning the address, city and country values).
+        It will then get the address control and then it will be told to reevaluate/rerun its validation.
+      -->
+      <input (ngModel)="newEvent.onlineUrl" name="onlineUrl" id="onlineUrl" type="text" class="form-control"
+              placeholder="Online Url..." (change)="locationGroup.control.controls.address.updateValueAndValidity()" />
     </div>
     <div class="form-group" [ngClass]="{'error': newEventForm.controls.imageUrl?.invalid && newEventForm.controls.imageUrl?.touched}">
       <label for="imageUrl">Image:</label>
@@ -57,7 +70,7 @@
       <img [src] = "newEventForm.controls.imageUrl.value" *ngIf = "newEventForm.controls.imageUrl?.valid"/>
     </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
-    <button type="button" [disabled]="newEventForm.invalid" class="btn btn-default" (click)="cancel()">Cancel</button>
+    <button type="submit" [disabled]="newEventForm.invalid" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
   </form>
 </div>
