@@ -13,23 +13,23 @@
 ### AAA is a unit test structure.
 * The first A is for "arrange", where the initial state of the unit test is set up (e.g. creating a class).
 * The second A is for "act", which is the part of the unit test where something is changed (e.g. method is called).
-* The third A is for "assert", where checking the expected result happens given the initial state and change in state.
+* The third A is for "assert", where checking the expected result happens given the initial state and change in state. <br />
 
-* DAMP is also a unit test structure
-* This allows for a little code duplication as long as it "tells a story"(e.g. trying to add a new user that already exists).
+### DAMP is also a unit test structure
+* This allows for a little code duplication as long as it "tells a story"(e.g. trying to add a new user that already exists). <br />
 
-* Mocking involves replacing a dependency with a fake piece of code that does less than the original code did.
-* An example of this can be mocking an HTTP server for the purpose of a unit test.
+### Mocking involves replacing a dependency with a fake piece of code that does less than the original code did.
+* An example of this can be mocking an HTTP server for the purpose of a unit test. <br />
 
-* Karma is a command line test runner that allows the unit tests to be executed.
+### Karma is a command line test runner that allows the unit tests to be executed. <br />
 
-* There are 2 types of tests: Isolated and Integrated Tests.
+### There are 2 types of tests: Isolated and Integrated Tests. <br />
 
-* Isolated tests test the class only and not the template code (HTML), making them simple in nature.
+### Isolated tests test the class only and not the template code (HTML), making them simple in nature.
 * They are the preferred test for services and pipes.
-* The constructor is called directly in the class.
+* The constructor is called directly in the class. <br />
 
-* Integrated tests test the class and the template.
+### Integrated tests test the class and the template.
 
 ## Homework
 * In the nav-bar html code, make it so that the "Events" dropdown shows all events and links to the event page.
