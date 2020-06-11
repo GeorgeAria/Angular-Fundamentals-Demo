@@ -9,7 +9,7 @@
 
 ## Unit Test Notes
 * Jasmine is the primary way of doing Unit Tests.
-  
+<br />
 * AAA is a unit test structure.
 * The first A is for "arrange", where the initial state of the unit test is set up (e.g. creating a class).
 * The second A is for "act", which is the part of the unit test where something is changed (e.g. method is called).
