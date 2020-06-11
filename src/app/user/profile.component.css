@@ -26,3 +26,7 @@ em{
 .error :-ms-input-placeholder{
   color: #999;
 }
+
+.btn-warning{
+  float: right;
+}

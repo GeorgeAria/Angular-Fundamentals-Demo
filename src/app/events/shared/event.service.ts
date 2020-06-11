@@ -1,7 +1,9 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, of } from 'rxjs';
 import { IEvent } from './event.model';
 import { ISession } from './session.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +11,11 @@ import { ISession } from './session.model';
 
 export class EventService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
 
   getEvents(): Observable<IEvent[]>{
+    /*
     //Subject() is a type of observable.
     //Subject is a generic, so it wants to know what data types it will contain.
     //In this case, it will be an "IEvent".
@@ -27,28 +30,29 @@ export class EventService {
     //After 100 milliseconds, the "EVENTS" data will be added to the Subject() stream.
     100)
 
-    return subject;
+    return subject;*/
+
+    return this.http.get<IEvent[]>('/api/events')
+      .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])))
   }
 
-  getEvent(id: number): IEvent{
-    return EVENTS.find(event => event.id === id);
+  getEvent(id:number):Observable<IEvent> {
+    return this.http.get<IEvent>('/api/events/' + id)
+      .pipe(catchError(this.handleError<IEvent>('getEvent')))
   }
 
-  saveEvent(event: any): void{
-    event.id = 999;
-    event.session = [];
-    EVENTS.push(event);
-  }
-
-  updateEvent(event: any): void{
-    let index = EVENTS.findIndex(x => x.id = event.id);
-    EVENTS[index] = event;
+  //The server allows this method to be used for creating new events and updating existing events.
+  saveEvent(event: any){
+    //options lets the server know that it is being sent JSON data
+    let options = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    return this.http.post<IEvent>('/api/events', event, options)
+      .pipe(catchError(this.handleError<IEvent>('saveEvent')))
   }
 
   //This method searches through all Sessions in all Events and finds the ones with the name given by the user.
-  
-  searchSessions(searchTerm: string){
-    let term = searchTerm.toLocaleLowerCase();
+
+  searchSessions(searchTerm: string): Observable<ISession[]>{
+    /*let term = searchTerm.toLocaleLowerCase();
     let results: ISession[] = [];
 
     EVENTS.forEach(event => {
@@ -68,10 +72,23 @@ export class EventService {
       emitter.emit(results);
     }, 100);
 
-    return emitter;
+    return emitter;*/
+
+    //All searching logic is handed off to the server.
+    return this.http.get<ISession[]>('/api/sessions/search?search=' + searchTerm)
+      .pipe(catchError(this.handleError<ISession[]>('searchSessions')))
+  }
+
+  // 'T' is just a generic type.
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    }
   }
 }
 
+//NOTE: This EVENTS constant is no longer needed since our ngf-server contains this data.
 const EVENTS: IEvent[] = [
   {
     id: 1,

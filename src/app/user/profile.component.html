@@ -16,7 +16,7 @@
       The "Validators" used in the component can be accessed here.
       "profileForm.controls.firstName.errors.required" is set to true if there is a "required" error.
       "profileForm.controls.firstName.errors.pattern" is set to true if there is a "pattern" error.
-      
+
       The reason why these values are so long is because the "firstName" value is private in the component.
       An alternate way of accessing the values (if they are public) can be seen in the "create-session" component/HTML template.
     -->
@@ -36,6 +36,8 @@
 
       <button type="submit" class="btn btn-primary">Save</button>
       <button (click) = "cancel()" type="button" class="btn btn-default">Cancel</button>
+
+      <button (click) = "logout()" type="button" class="btn btn-warning">Logout</button>
     </form>
   </div>
 </div>

@@ -12,11 +12,11 @@ export class EventsListResolverService implements Resolve<any> {
 
   //map() gives access to the events in the observable stream to is given in getEvents()
   resolve(){
-    return this.eventService.getEvents().pipe(
+    return this.eventService.getEvents();/*.pipe(
       map(
         events => events
       )
-    )
+    )*/
   }
 
 }

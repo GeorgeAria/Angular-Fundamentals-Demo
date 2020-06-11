@@ -15,7 +15,7 @@
 <!--
   Within *ngIf, it will only show the required text if it has invalid data (in this case, it is "required to have
   some kind of data"), and it must have been clicked on at some point.
-  
+
   The (input) makes it so that when text is entered into the input box, and event is fired.
   In this case, the event is that the "userName" variable is updated (to the value in the input box),
   in the component for this HTML template.
@@ -27,13 +27,13 @@
 -->
       <em *ngIf = "loginForm.controls.userName?.invalid && (loginForm.controls.userName?.touched || mouseoverLogin)">Required</em>
       <input (ngModel) = "username" name = "userName" id="userName" type="text" class="form-control"
-      placeholder="User Name..." required />
+      placeholder="User Name..." />
     </div>
     <div class="form-group" >
       <label for="password">Password:</label>
       <em *ngIf = "loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || mouseoverLogin)">Required</em>
       <input (ngModel) = "password" name = "password" id="password" type="password" class="form-control"
-      placeholder="Password..." required/>
+      placeholder="Password..." />
     </div>
 
     <span (mouseenter) = "mouseoverLogin = true" (mouseleave) = "mouseoverLogin = false">
@@ -42,4 +42,8 @@
 
     <button type="button" (click) = "cancel()"  class="btn btn-default">Cancel</button>
   </form>
+  <br>
+  <div *ngIf = "loginInvalid" class = "alert alert-danger">
+    Invalid Login Information
+  </div>
 </div>

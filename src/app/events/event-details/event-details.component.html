@@ -70,6 +70,6 @@
     Remember that the values in [] are being given to that HTML tag's component class.
     Basically, the value in the [] is in the HTML tag's component class and the value in the "" is in the component class here.
   -->
-  <session-list *ngIf = "!addMode" [sessions] = "event?.sessions" [filterBy] = "filterBy" [sortBy] = "sortBy"></session-list>
+  <session-list [eventId] = "event?.id" *ngIf = "!addMode" [sessions] = "event?.sessions" [filterBy] = "filterBy" [sortBy] = "sortBy"></session-list>
   <create-session *ngIf = "addMode" (saveNewSession) = "saveNewSession($event)" (cancelAddSession) = "cancelAddSession()"></create-session>
 </div>

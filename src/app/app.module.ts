@@ -20,6 +20,7 @@ import { SimpleModalComponent } from './common/simple-modal.component';
 import { ModalTriggerDirective } from './common/modal-trigger.directive';
 import { UpvoteComponent } from './events/event-details/upvote.component';
 import { LocationValidatorDirective } from './events/location-validator.directive';
+import { HttpClientModule } from "@angular/common/http"
 
 let toastr: Toastr = window['toastr'];
 let jQuery = window['$'];
@@ -47,7 +48,8 @@ let jQuery = window['$'];
     RouterModule.forRoot(appRoutes),
     UserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     {provide: TOASTR_TOKEN, useValue: toastr},
