@@ -8,7 +8,7 @@
 * Unit tests are meant to test a piece of code. They should be fast, easy to write and reliable.
 
 ## Unit Test Notes
-* Jasmine is the primary way of doing Unit Tests.
+* Jasmine is the primary way of doing Unit Tests.__
 
 * AAA is a unit test structure.
 * The first A is for "arrange", where the initial state of the unit test is set up (e.g. creating a class).
