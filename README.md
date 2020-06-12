@@ -28,11 +28,11 @@
 
 ### Isolated tests test the class only and not the template code (HTML), making them simple in nature.
 * They are the preferred test for services and pipes.
-* The constructor is called directly in the class. <br /> <br />
+* The constructor is called directly in the class and is manually created by the developer. <br /> <br />
 
 ### Integrated tests test the class and the template (if its a component/directive), making them complex in nature.
 * They are the preferred test for components and directives, and sometimes services.
-* It is constructed by the framework, not by the developer.
+* It is constructed by the framework, not by the developer using the TestBed utility.
 * There are 2 types of integrated tests: deep and shallow.
 * A deep test will test multiple components (e.g. parent and child component).
 * A shallow test will only test a single component. <br /> <br />
