@@ -8,7 +8,8 @@
 * Unit tests are meant to test a piece of code. They should be fast, easy to write and reliable.
 
 ## Unit Test Notes
-### Jasmine is the primary way of doing Unit Tests. <br /> <br />
+### The "voter.service.spec.ts" file gives documentation on how to work with Unit Tests. <br /><br /><br />
+### Jasmine is a behavior-driven development framework and is used to create Unit Tests. <br /> <br />
 
 ### AAA is a unit test structure.
 * The first A is for "arrange", where the initial state of the unit test is set up (e.g. creating a class).
@@ -29,7 +30,13 @@
 * They are the preferred test for services and pipes.
 * The constructor is called directly in the class. <br /> <br />
 
-### Integrated tests test the class and the template.
+### Integrated tests test the class and the template (if its a component/directive), making them complex in nature.
+* They are the preferred test for components and directives, and sometimes services.
+* It is constructed by the framework, not by the developer.
+* There are 2 types of integrated tests: deep and shallow.
+* A deep test will test multiple components (e.g. parent and child component).
+* A shallow test will only test a single component. <br /> <br />
+
 
 ## Homework
 * In the nav-bar html code, make it so that the "Events" dropdown shows all events and links to the event page.
