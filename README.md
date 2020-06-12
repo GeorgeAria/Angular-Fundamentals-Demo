@@ -25,6 +25,7 @@
 ### Karma is a command line test runner that allows the unit tests to be executed. <br /> <br />
 
 ### There are 2 types of tests: Isolated and Integrated Tests. <br /> <br />
+### NOTE: The "session-list.component.isolated.spec.ts" and the "session-list.component.integrated.spec.ts" files can be referenced.
 
 ### Isolated tests test the class only and not the template code (HTML), making them simple in nature.
 * They are the preferred test for services and pipes.
