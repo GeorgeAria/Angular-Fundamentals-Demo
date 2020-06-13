@@ -23,7 +23,7 @@ export class SessionListComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
-  //Every time one of the Input() variables have a change in their value, ngChanges will fire.
+  // Every time one of the Input() variables have a change in their value, ngChanges will fire.
 
   ngOnChanges(): void{
     if(this.sessions)
@@ -33,8 +33,8 @@ export class SessionListComponent implements OnInit, OnChanges {
     }
   }
 
-  //this.sessions.slice(0) will create a complete duplicate of the array with the same elements.
-  //this.sessions.filter() creates a brand new array, with the values that have a "level" value equal to the "filter" value.
+  // this.sessions.slice(0) will create a complete duplicate of the array with the same elements.
+  // this.sessions.filter() creates a brand new array, with the values that have a "level" value equal to the "filter" value.
 
   filterSessions(filter: string): void{
     if(filter === "all")
@@ -68,7 +68,7 @@ export class SessionListComponent implements OnInit, OnChanges {
 
 function sortByNameAsc(s1: ISession, s2: ISession){
 
-  //If the first session's name is after (alphabetically) the second session's name, it will return 1.
+  // If the first session's name is after (alphabetically) the second session's name, it will return 1.
   if(s1.name > s2.name)
   {
     return 1;
@@ -83,9 +83,9 @@ function sortByNameAsc(s1: ISession, s2: ISession){
   }
 }
 function sortByVotesDesc(s1: ISession, s2: ISession){
-  //This has similar logic to the function above.
-  //If the second session has more votes than the first session, a positive number will be returned.
-  //Same number of votes, 0 is returned.
-  //The last scenario will always return a negative number, implying the first session has more votes.
+  // This has similar logic to the function above.
+  // If the second session has more votes than the first session, a positive number will be returned.
+  // Same number of votes, 0 is returned.
+  // The last scenario will always return a negative number, implying the first session has more votes.
   return s2.voters.length - s1.voters.length;
 }
